@@ -1,0 +1,11 @@
+﻿// ========================================================
+
+@mixin crossBrowser($property, $css) {
+	-webkit-#{$property}: $css;
+	-moz-#{$property}: $css;
+	-ms-#{$property}: $css;
+	-o-#{$property}: $css;
+	#{$property}: $css;
+}
+// EXAMPLE crossBrowser ===========>
+// @include crossBrowser(transition, all 0.4s ease);
