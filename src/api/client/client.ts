@@ -53,9 +53,9 @@ export class Client {
 			let { data } = await httpService.get(`${url}`, {
 				headers: getHeaders(),
 				...options,
-				signal: this.abortService.getSignal()
+				//TODO: починить abortServicce
+				// signal: this.abortService.getSignal()
 			});
-
 			console.log(`Response from '${url}'`, `time: ${Date.now() - dateBeforeRequest}ms`, data);
 
 			return data;
@@ -74,7 +74,8 @@ export class Client {
 			let { data } = await httpService.put(url, payload, {
 				headers: getHeaders(),
 				...config,
-				signal: this.abortService.getSignal()
+				//TODO: починить abortServicce
+				// signal: this.abortService.getSignal()
 			});
 
 			console.log(`Response from '${url}'`, data);
@@ -94,7 +95,8 @@ export class Client {
 
 			let { data } = await httpService.post(url, payload, {
 				...config,
-				signal: this.abortService.getSignal()
+				//TODO: починить abortServicce
+				// signal: this.abortService.getSignal()
 			});
 
 			console.log(`Response from '${url}'`, data);
@@ -111,7 +113,8 @@ export class Client {
 
 			let { data } = await httpService.delete(url, {
 				headers: getHeaders(),
-				signal: this.abortService.getSignal()
+				//TODO: починить abortServicce
+				// signal: this.abortService.getSignal()
 			});
 
 			console.log(`Response from '${url}'`, data);

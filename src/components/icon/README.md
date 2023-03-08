@@ -1,3 +1,0 @@
-# Icon components
-
-This folder is for custom icon components...
