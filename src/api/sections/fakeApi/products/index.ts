@@ -1,11 +1,10 @@
 ﻿import BaseController from "@/api/shared/baseController";
-import AbortService from "@/services/abortService";
 import urls from "@/api/config/urls";
 import ApiProductsParameters from "@/api/sections/fakeApi/products/types/apiProductsItems";
 
 export class ProductsController extends BaseController {
-	constructor(abortService: AbortService) {
-		super(abortService);
+	constructor() {
+		super();
 	}
 
 	getAllProducts = async (): Promise<ApiProductsParameters> => {

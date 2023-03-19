@@ -1,11 +1,11 @@
 ﻿import { NavigationGuardNext, RouteLocationNormalized, Router } from "vue-router";
 import Middleware from "@/router/middleware/middleware";
 import RedirectMiddleware from "@/router/middleware/items/redirectMiddleware";
-import { useMainStore } from "@/store/main";
+import { useRootStore } from "@/store";
 
 export const configureMiddleware = (router: Router) => {
 	router.beforeEach(async (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
-		const mainStore = useMainStore();
+		const rootStore = useRootStore();
 		const middleware = new Middleware(to, from, next);
 		const publicRoute = to.matched.some(record => record.meta.public);
 
@@ -18,7 +18,7 @@ export const configureMiddleware = (router: Router) => {
 		//TODO: убрать timeout, как придет время
 
 		setTimeout(() => {
-			mainStore.setIsMyAppLoading(false);
+			rootStore.setIsMyAppLoading(false);
 		}, 700);
 	});
 };

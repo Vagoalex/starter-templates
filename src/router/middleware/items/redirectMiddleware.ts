@@ -4,7 +4,6 @@ import { IMiddleware } from "@/types/core/middleware";
 
 export default class RedirectMiddleware implements IMiddleware {
 	constructor() {
-
 	}
 
 	async invoke(to: RouteLocationNormalized, from: RouteLocationNormalized) {

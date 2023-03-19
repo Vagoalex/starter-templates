@@ -1,12 +1,11 @@
-﻿import AbortService from "@/services/abortService";
-import httpService from "@/api/client/httpService";
+﻿import httpService from "@/api/client/httpService";
 import { getHeaders } from "@/api/config/headers";
 import axios from "axios";
 import RequestCancelledException from "@/api/exceptions/requestCancelledException";
 import HttpNotFoundException from "@/api/exceptions/httpNotFoundException";
 import BadRequestException from "@/api/exceptions/badRequestException";
 import AccessForbiddenException from "@/api/exceptions/accessForbiddenException";
-import ServerUnavailableException from "@/api/exceptions/serverUnavailableExceprion";
+import ServerUnavailableException from "@/api/exceptions/serverUnavailableException";
 import OfflineException from "@/api/exceptions/offlineException";
 import { processApiPayload } from "@/utils/api";
 
@@ -17,6 +16,8 @@ const classifyError = (error: any, { url }: { url: string }) => {
 
 	if(error.response) {
 		const data: any = error.response.data;
+
+		console.warn(error.response, data)
 
 		if(error.response.status === 400)
 			return new BadRequestException(data.title, data.detail);
@@ -39,10 +40,7 @@ const classifyError = (error: any, { url }: { url: string }) => {
 };
 
 export class Client {
-	abortService: AbortService;
-
-	constructor(abortService: AbortService) {
-		this.abortService = abortService;
+	constructor() {
 	}
 
 	async get<T>(url: string, options?: object): Promise<T> {
@@ -52,9 +50,7 @@ export class Client {
 
 			let { data } = await httpService.get(`${url}`, {
 				headers: getHeaders(),
-				...options,
-				//TODO: починить abortServicce
-				// signal: this.abortService.getSignal()
+				...options
 			});
 			console.log(`Response from '${url}'`, `time: ${Date.now() - dateBeforeRequest}ms`, data);
 
@@ -73,9 +69,7 @@ export class Client {
 
 			let { data } = await httpService.put(url, payload, {
 				headers: getHeaders(),
-				...config,
-				//TODO: починить abortServicce
-				// signal: this.abortService.getSignal()
+				...config
 			});
 
 			console.log(`Response from '${url}'`, data);
@@ -94,9 +88,7 @@ export class Client {
 			console.log(`Request from '${url}'`, payload);
 
 			let { data } = await httpService.post(url, payload, {
-				...config,
-				//TODO: починить abortServicce
-				// signal: this.abortService.getSignal()
+				...config
 			});
 
 			console.log(`Response from '${url}'`, data);
@@ -112,9 +104,7 @@ export class Client {
 			console.log(`Request from '${url}'`);
 
 			let { data } = await httpService.delete(url, {
-				headers: getHeaders(),
-				//TODO: починить abortServicce
-				// signal: this.abortService.getSignal()
+				headers: getHeaders()
 			});
 
 			console.log(`Response from '${url}'`, data);

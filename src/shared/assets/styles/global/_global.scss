@@ -1,0 +1,89 @@
+﻿@import '@assets/styles/options/_variables.scss';
+
+html {
+	scroll-behavior: smooth;
+}
+body {
+	font-family: 'Montserrat', 'Roboto', sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
+	min-width: 320px;
+	position: relative;
+	overflow-x: hidden;
+
+	color: #000;
+
+	@include crossBrowser(transition, all 0.4s ease);
+}
+::-webkit-scrollbar {
+	width: 0;
+}
+header {
+	z-index: 100;
+}
+section {
+	z-index: 50;
+}
+footer {
+	z-index: 50;
+}
+
+.hidden {
+	display: none;
+}
+
+.link-button {
+	display: inline-block;
+	padding: 18px 37px;
+	border-radius: 100px;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 20px;
+	text-align: center;
+
+	@media (max-width: $media-phones) {
+		font-size: 15px;
+		padding: 15px 31px;
+	}
+}
+
+.wrapper-max {
+	max-width: 1200px;
+	margin: 0 auto;
+
+	@media (max-width: $media-laptops) {
+		max-width: 700px;
+	}
+
+	@media (max-width: $media-tablets) {
+		max-width: 365px;
+	}
+
+	@media (max-width: $media-phones) {
+		max-width: 330px;
+	}
+	@media (max-width: $media-small-phones) {
+		max-width: 290px;
+	}
+}
+.wrapper-min {
+	max-width: 1000px;
+	margin: 0 auto;
+
+	@media (max-width: $media-laptops) {
+		max-width: 550px;
+	}
+
+	@media (max-width: $media-tablets) {
+		max-width: 330px;
+	}
+
+	@media (max-width: $media-phones) {
+		max-width: 300px;
+	}
+	@media (max-width: $media-small-phones) {
+		max-width: 260px;
+	}
+}

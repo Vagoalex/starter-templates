@@ -1,11 +1,4 @@
-﻿<script setup lang="ts">
-// import { getImagesPath } from "@/utils/getImagesPath";
-//
-// const imagesPath = getImagesPath();
-</script>
-
-
-<template>
+﻿<template>
 	<div class="test">
 		<div>
 			<span>тут должна быть картинка</span>
@@ -15,6 +8,11 @@
 	</div>
 </template>
 
+<script setup lang="ts">
+// import { getImagesPath } from "@/utils/getImagesPath";
+//
+// const imagesPath = getImagesPath();
+</script>
 
 <style scoped>
 .test {

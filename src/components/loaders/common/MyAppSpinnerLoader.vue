@@ -1,11 +1,11 @@
-﻿<script setup lang="ts">
-</script>
-
-<template>
+﻿<template>
 	<div class="spinner-wrapper">
 		<span class="loader"></span>
 	</div>
 </template>
+
+<script setup lang="ts">
+</script>
 
 <style scoped lang="scss">
 .spinner-wrapper {

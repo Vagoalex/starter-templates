@@ -1,34 +1,22 @@
-﻿<script setup lang="ts">
-import { ref } from "vue";
-import { useMainStore } from "@/store/main";
-import MyIcon from "@/components/icon/MyIcon.vue";
-import { useFakeApiProductsStore } from "@/store/modules/fakeApi/products";
-
-const mainStore = useMainStore();
-const productsStore = useFakeApiProductsStore();
-
-const title = ref("Hello world!");
-
-const testSecretKey = import.meta.env.VITE_SECRET_ENV_LOCAL_TEST_CODE;
-
-</script>
-
-<template>
+﻿<template>
 	<div class="test">
 		<h1 class="test__title">{{ title }}</h1>
 		<div class="test-div">
 			<div>
-				Test counter: {{ mainStore.count }}
+				Test counter: {{ count }}
 			</div>
-			<button @click="mainStore.increment()">INCR counter</button>
-			<button @click="mainStore.doubleIncrement()">Double counter</button>
+			<button @click="mainStore.increment">INCR counter</button>
+			<button @click="mainStore.doubleIncrement">Double counter</button>
 			<div>
-				Doubled counter: {{ mainStore.doubleCount }}
+				Doubled counter: {{ doubleCount }}
 			</div>
 			<div class="flex">
 				<span>Test svg:</span>
 
-				<my-icon name="vite"></my-icon>
+				<my-icon name="vite"
+						 width="30"
+						 height="30">
+				</my-icon>
 
 				<div>{{ testSecretKey }}</div>
 
@@ -37,22 +25,22 @@ const testSecretKey = import.meta.env.VITE_SECRET_ENV_LOCAL_TEST_CODE;
 					<button v-else @click="productsStore.fetchProducts">Fetch products</button>
 				</div>
 
-				<template v-if="productsStore.products.products.length">
+				<template v-if="products.products.length">
 					<div class="products-wrapper">
 						<div class="products">
-							{{ productsStore.products.products[0].id }}
+							{{ products.products[0].id }}
 						</div>
 						<div class="products">
-							{{ productsStore.products.products[0].title }}
+							{{ products.products[0].title }}
 						</div>
 						<div class="products">
-							{{ productsStore.products.products[0].description }}
+							{{ products.products[0].description }}
 						</div>
 						<div class="products">
-							{{ productsStore.products.products[0].price }}
+							{{ products.products[0].price }}
 						</div>
 						<div class="products">
-							{{ productsStore.products.products[0].discountPercentage }}
+							{{ products.products[0].discountPercentage }}
 						</div>
 					</div>
 				</template>
@@ -61,6 +49,28 @@ const testSecretKey = import.meta.env.VITE_SECRET_ENV_LOCAL_TEST_CODE;
 		</div>
 	</div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { storeToRefs } from "pinia";
+import { useRootStore } from "@/store";
+import { useFakeApiProductsStore } from "@/store/modules/fakeApi/products";
+import MyIcon from "@/components/icon/MyIcon.vue";
+
+const mainStore = useRootStore();
+const {
+	count,
+	doubleCount
+} = storeToRefs(mainStore);
+
+const productsStore = useFakeApiProductsStore();
+const { products } = storeToRefs(productsStore);
+
+const title = ref("Hello world!");
+
+const testSecretKey = import.meta.env.VITE_SECRET_ENV_LOCAL_TEST_CODE;
+
+</script>
 
 <style scoped lang="scss">
 .test {

@@ -1,14 +1,15 @@
 ﻿import { defineStore } from "pinia";
 import ProductsState from "@/store/modules/fakeApi/products/types/productsState";
 import { ProductsController } from "@/api/sections/fakeApi/products";
-import AbortService from "@/services/abortService";
-import ApiProduct from "@/api/sections/fakeApi/products/types/apiProduct";
 import ApiProductsParameters from "@/api/sections/fakeApi/products/types/apiProductsItems";
+import storeManager from "@/store/manager";
+import AlertHelper from "@/store/shared/alerts/helpers/alertHelper";
 
-const abortService = new AbortService();
-const productsController = new ProductsController(abortService);
+const productsController = new ProductsController();
 
-export const useFakeApiProductsStore = defineStore("fake-api_products", {
+const namespace = storeManager.myApp.modules.fakeApi.products.namespace;
+
+export const useFakeApiProductsStore = defineStore(namespace, {
 	state: (): ProductsState => (
 		{
 			products: new ApiProductsParameters(),
@@ -27,8 +28,9 @@ export const useFakeApiProductsStore = defineStore("fake-api_products", {
 				console.warn(products);
 
 				this.setProducts(products);
-			} catch (err) {
+			} catch (err: any) {
 				console.error(err);
+				AlertHelper.handleGeneralRequestErrors(err)
 			} finally {
 				this.setIsProductsLoading(false);
 			}

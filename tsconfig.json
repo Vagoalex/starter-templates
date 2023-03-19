@@ -18,15 +18,19 @@
 		"noEmit" : true,
 		"paths" : {
 			"@/*" : [
-				"src/*"
+				"./src/*"
+			],
+			"@assets/*" : [
+				"./src/shared/assets/*"
 			]
 		}
 	},
 	"include" : [
-		"src/**/*.ts",
-		"src/**/*.d.ts",
-		"src/**/*.tsx",
-		"src/**/*.vue"
+		"./src/**/*.ts",
+		"./src/**/*.d.ts",
+		"./src/**/*.tsx",
+		"./src/**/*.vue",
+		"./src/**/*.scss",
 	],
 	"references" : [
 		{
