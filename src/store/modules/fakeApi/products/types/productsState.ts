@@ -1,11 +1,7 @@
 ﻿import ApiProductsParameters from "@/api/sections/fakeApi/products/types/apiProductsItems";
 
-export default class ProductsState {
-	constructor(
-		public products: ApiProductsParameters = new ApiProductsParameters(),
-		public isProductsLoading: boolean = false
-	)
-	{
-	}
-
+interface IProductsState {
+	products: ApiProductsParameters;
+	isProductsLoading: boolean;
 }
+export default IProductsState

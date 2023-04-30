@@ -1,7 +1,7 @@
 ﻿<template>
 	<div class="toast-wrapper" :class="props.right ? 'toast-wrapper--right' : 'toast-wrapper--default'">
 		<my-alerts-toast :text="errorAlert.text"
-						 @close="alertsStore.removeErrorAlert(errorAlert.id)"
+						 @close="alertsStore.REMOVE_ERROR_ALERT(errorAlert.id)"
 						 :type="AlertsType.ERROR"
 						 icon="ico-error"
 						 :data-cy="`${AlertsType.ERROR}-alert`"
@@ -11,7 +11,7 @@
 						 class="error-toasts">
 		</my-alerts-toast>
 		<my-alerts-toast :text="infoAlert.text"
-						 @close="alertsStore.removeInfoAlert(infoAlert.id)"
+						 @close="alertsStore.REMOVE_INFO_ALERT(infoAlert.id)"
 						 :type="AlertsType.INFO"
 						 icon="ico-info"
 						 :data-cy="`${AlertsType.INFO}-alert`"

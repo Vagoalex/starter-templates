@@ -1,11 +1,8 @@
 ﻿import Alert from "@/store/shared/alerts/types/alert";
 
-export default class AlertsState {
+interface IAlertsState {
 	errorAlerts: Alert[];
 	infoAlerts: Alert[];
-
-	constructor({ errorAlerts, infoAlerts }: { errorAlerts: Alert[], infoAlerts: Alert[] }) {
-		this.errorAlerts = errorAlerts;
-		this.infoAlerts = infoAlerts;
-	}
 }
+
+export default IAlertsState;

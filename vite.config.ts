@@ -11,5 +11,8 @@ export default defineConfig({
 			{ find: "@", replacement: fileURLToPath(new URL("./src", import.meta.url)) },
 			{ find: "@assets", replacement: fileURLToPath(new URL("./src/shared/assets", import.meta.url)) }
 		]
+	},
+	server:{
+		port: 8080
 	}
 });

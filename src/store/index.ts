@@ -1,12 +1,12 @@
 ﻿import { defineStore } from "pinia";
 import storeManager from "@/store/manager";
 import { PageModeType } from "@/store/types/pageModeType";
-import RootState from "@/store/types/rootState";
+import IRootState from "@/store/types/rootState";
 
 const namespace = storeManager.myApp.main.namespace;
 
 export const useRootStore = defineStore(namespace, {
-	state: (): RootState => (
+	state: (): IRootState => (
 		{
 			count: 0,
 			pageMode: PageModeType.OK,
@@ -17,22 +17,22 @@ export const useRootStore = defineStore(namespace, {
 		doubleCount: (state) => state.count * 2
 	},
 	actions: {
-		increment() {
+		INCREMENT() {
 			this.count++;
 		},
-		doubleIncrement() {
+		DOUBLE_INCREMENT() {
 			this.count *= 2;
 		},
-		setIsMyAppLoading(value: boolean) {
+		SET_IS_MY_APP_LOADING(value: boolean) {
 			this.isMyAppLoading = value;
 		},
-		resetPageMode() {
+		RESET_PAGE_MODE() {
 			this.pageMode = PageModeType.OK;
 		},
-		setPageNotFound() {
+		SET_PAGE_MODE_NOT_FOUND() {
 			this.pageMode = PageModeType.PAGE_NOT_FOUND;
 		},
-		setPageModeAccessForbidden() {
+		SET_PAGE_MODE_ACCESS_DENIED() {
 			this.pageMode = PageModeType.ACCESS_DENIED;
 		}
 	}

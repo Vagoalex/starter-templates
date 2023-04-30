@@ -5,8 +5,8 @@
 			<div>
 				Test counter: {{ count }}
 			</div>
-			<button @click="mainStore.increment">INCR counter</button>
-			<button @click="mainStore.doubleIncrement">Double counter</button>
+			<button @click="mainStore.INCREMENT">INCR counter</button>
+			<button @click="mainStore.DOUBLE_INCREMENT">Double counter</button>
 			<div>
 				Doubled counter: {{ doubleCount }}
 			</div>
@@ -22,7 +22,7 @@
 
 				<div>
 					<h4 v-if="productsStore.isProductsLoading">Loading.....</h4>
-					<button v-else @click="productsStore.fetchProducts">Fetch products</button>
+					<button v-else @click="productsStore.FETCH_PRODUCTS">Fetch products</button>
 				</div>
 
 				<template v-if="products.products.length">

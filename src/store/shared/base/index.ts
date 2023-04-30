@@ -9,9 +9,9 @@ export const useBaseStore = defineStore(namespace, {
 	state: () => ({}),
 	getters: {},
 	actions: {
-		initializeBase() {
+		INITIALIZE_BASE() {
 		},
-		setRequest() {
+		SET_REQUEST() {
 			const rootStore = useRootStore();
 			try {
 

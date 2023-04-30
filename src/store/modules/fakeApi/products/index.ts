@@ -1,16 +1,16 @@
 ﻿import { defineStore } from "pinia";
-import ProductsState from "@/store/modules/fakeApi/products/types/productsState";
 import { ProductsController } from "@/api/sections/fakeApi/products";
 import ApiProductsParameters from "@/api/sections/fakeApi/products/types/apiProductsItems";
 import storeManager from "@/store/manager";
 import AlertHelper from "@/store/shared/alerts/helpers/alertHelper";
+import IProductsState from "@/store/modules/fakeApi/products/types/productsState";
 
 const productsController = new ProductsController();
 
 const namespace = storeManager.myApp.modules.fakeApi.products.namespace;
 
 export const useFakeApiProductsStore = defineStore(namespace, {
-	state: (): ProductsState => (
+	state: (): IProductsState => (
 		{
 			products: new ApiProductsParameters(),
 			isProductsLoading: false
@@ -20,25 +20,24 @@ export const useFakeApiProductsStore = defineStore(namespace, {
 		getProducts: ({ products }) => products.products || []
 	},
 	actions: {
-		async fetchProducts() {
-			this.setIsProductsLoading(true);
+		async FETCH_PRODUCTS() {
+			this.SET_IS_PRODUCTS_LOADING(true);
 
 			try {
 				const products = await productsController.getAllProducts();
-				console.warn(products);
 
-				this.setProducts(products);
+				this.SET_PRODUCTS(products);
 			} catch (err: any) {
 				console.error(err);
 				AlertHelper.handleGeneralRequestErrors(err)
 			} finally {
-				this.setIsProductsLoading(false);
+				this.SET_IS_PRODUCTS_LOADING(false);
 			}
 		},
-		setProducts(value: ApiProductsParameters) {
+		SET_PRODUCTS(value: ApiProductsParameters) {
 			this.products = value;
 		},
-		setIsProductsLoading(value: boolean) {
+		SET_IS_PRODUCTS_LOADING(value: boolean) {
 			this.isProductsLoading = value;
 		}
 	}

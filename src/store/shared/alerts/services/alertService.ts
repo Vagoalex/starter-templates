@@ -17,22 +17,22 @@ const alertTextMap = {
 class AlertService {
 	addError(key: AlertKeys) {
 		const alertsStore = useAlertsStore();
-		alertsStore.addErrorAlert(alertTextMap[key]);
+		alertsStore.ADD_ERROR_ALERT(alertTextMap[key]);
 	}
 
 	addInfo(key: AlertKeys) {
 		const alertsStore = useAlertsStore();
-		alertsStore.addInfoAlert(alertTextMap[key]);
+		alertsStore.ADD_INFO_ALERT(alertTextMap[key]);
 	}
 
 	addCustomError(text: string) {
 		const alertsStore = useAlertsStore();
-		alertsStore.addErrorAlert(text);
+		alertsStore.ADD_ERROR_ALERT(text);
 	}
 
 	addCustomInfo(text: string) {
 		const alertsStore = useAlertsStore();
-		alertsStore.addInfoAlert(text);
+		alertsStore.ADD_INFO_ALERT(text);
 	}
 }
 

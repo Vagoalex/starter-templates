@@ -18,7 +18,7 @@ export const configureMiddleware = (router: Router) => {
 		//TODO: убрать timeout, как придет время
 
 		setTimeout(() => {
-			rootStore.setIsMyAppLoading(false);
+			rootStore.SET_IS_MY_APP_LOADING(false);
 		}, 700);
 	});
 };
